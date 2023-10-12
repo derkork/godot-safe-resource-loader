@@ -38,20 +38,25 @@ Godot's text based resource format makes it easy to embed malicious scripts into
 
 ### How does it work?
 
-The current implementation is rather simple, it simply checks with a regular expression whether there are embedded resources of type `GDScript` in the file before feeding the file to Godot's `ResourceLoader`.
+The current implementation is rather simple, it checks with a regular expression whether there are embedded resources of type `GDScript` in the file before feeding the file to Godot's `ResourceLoader`.
 
 ### Is this secure?
 
 The current implementation is preventing one currently known attack vector. However it is basically a blacklist-based approach and some clever person might find a way of circumventing it in which case the library will need to be patched to prevent this new attack. Ideally Godot would provide a way to load resources in a sandboxed environment that does not allow GDScript execution, so this library would not be necessary.
 
+### This is a terrible idea, I know five ways to break this already!
+
+I am fully open to the possibility that this may not secure enough and that there may be ways to circumvent this. However it is hard to defend against attacks you don't know. So if you are a security expert and have some ideas on how to better implement this, please reach out and open an issue! 
+
 ### Why not just use JSON instead of resources?
 
-Resources provide excellent support for loading large graphs of nested objects and keeping references between these objects intact. This is very useful for savegames, as you can simply build a nice object graph in your game and then save / load it with a single line of code. If you want to do the same thing with JSON you will need to manually serialize/deserialize all objects into JSON structures and also find a way of keeping references within the object graph intact. This is a lot of work to replicate something that resources already provide out of the box. I therefore think, that using this library is a nice compromise between security and implementation effort.
-
+Resources provide excellent support for storing/loading large graphs of nested objects and keeping references between these objects intact. This is very useful for savegames, as you can simply build a nice object graph in your game and then save / load it with a single line of code. If you want to do the same thing with JSON you will need to manually serialize/deserialize all objects into JSON structures and also find a way of keeping references within the object graph intact. This is a lot of work, just to replicate something that resources already provide out of the box. I therefore think, that using this library is an acceptable compromise between security and implementation effort.
 
 ### Do I really need to bother with this?
 
-You will need to look at how popular the game is and the incentive a potential attacker could have to go to through the trouble of making a malicious savegame and distributing it to your game's player base. For many games this is probably not worth the effort - neither for you nor for a potential attacker. However if your game is popular enough, that it is likely to be a target for hackers, it may be worth considering how you can protect your users from malicious savegames. Using library is one way of doing this. You can also go all in and write a custom serialization system using JSON, XML or another format. Another way would be to provide a safe website for sharing savegames where content is scanned before other users can download it. There are a lot of options and this library is just one of them. Pick one that provides the best balance between required security and development effort for your game.
+You will need to look at how popular the game is and the incentive for potential attacker to go to through the trouble of making a malicious savegame and distributing it to your game's player base. For many games this is probably not worth the effort - neither for you nor for a potential attacker. However if your game is popular enough, that it is likely to be a target for hackers, it may be worth considering how you can protect your users from malicious savegames. 
+
+Using library is one way of doing this. You can also go all in and write a custom serialization system using JSON, XML or another format that doesn't allow for embedded scripts. Another way would be to provide a safe website for sharing savegames where content is scanned before other users can download it. There are a lot of options and this library is just one of them. Pick one that provides the best balance between required security and development effort for your situation.
 
 ### Why is the icon looking so hideous?
 
