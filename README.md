@@ -7,7 +7,7 @@ _This library is still quite new and has not seen much use yet. While it works r
 
 ## What is Godot Safe Resource Loader?
 
-Godot Safe Resource Loader is a small library that allows you to safely load `.tres` resource files from unknown sources without risking your users' security. It does this by scanning the resource file for embedded GDScripts before loading it, and then only loading the resource if no GDScripts are found. The main use case for this are savegame files. If you want to allow your users to share savegames, you can use this library to load them without risking that they contain malicious code.
+Godot Safe Resource Loader is a small library that allows you to safely load `.tres` resource files from unknown sources without risking your player's security. It does this by scanning the resource file for embedded GDScripts before loading it, and then only loading the resource if no GDScripts are found. The main use case for this is to allow your users to share savegames and load them without risking that they contain malicious code.
 
 
 ## Installation
