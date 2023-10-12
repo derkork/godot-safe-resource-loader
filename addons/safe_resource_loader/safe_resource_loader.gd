@@ -42,5 +42,5 @@ static func load(path:String, type_hint:String = "", \
 		return null
 		
 	# otherwise use the normal resource loader to load it.
-	return ResourceLoader.load(path, type_hint, )
+	return ResourceLoader.load(path, type_hint, cache_mode)
 	
