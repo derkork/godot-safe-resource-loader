@@ -26,8 +26,8 @@ var resource = SafeResourceLoader.load("user://path/to/saved_game.tres")
 If you're using C# you will have to first load the script and then call the load method on it:
 
 ```cs
-var loader = ResourceLoader.Load("res://addons/GDScriptSample.gd") as Script;
-gdclass.Call("printData", "Print Data Has Worked!");
+var loader = ResourceLoader.Load("res://addons/safe_resource_loader/safe_resource_loader.gd") as Script;
+var resource = loader.Call("load", "user://path/to/saved_game.tres");
 ```
 
 This will scan the resource for embedded GDScripts and only load it if none are found. If embedded GDScripts are found, a warning will be printed and this function returns `null`. Note that this function will only load from paths outside the `res://` folder (e.g. saved games are usually stored in the `user://` folder). Loading resources that are under your control with this does not make any sense and in addition will not work once you export the game, as resources inside the `res://` folder cannot be accessed by file system scripts after export.
