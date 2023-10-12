@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg7u2024skyge"]
+
+[ext_resource type="Script" path="res://safe_resource_loader_example/example.gd" id="1_wf41y"]
+
+[node name="Example" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wf41y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "This example shows how to use the SafeResourceLoader. Use the \"Loade Resource Safely\" button to select one of the provided resource files and load it with the safe resource loader. This should prevent code from the resource to be executed. Using the \"Load Resource Normal\" button will use Godot's built-in ResourceLoader and will execute code embedded in the resource."
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="OpenSafeButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Load Resource Safely"
+
+[node name="OpenUnsafeButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Load Resource Normal"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="ResultLabel" type="Label" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="FileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+initial_position = 1
+title = "Open a File"
+size = Vector2i(750, 400)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tres; Resources")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/OpenSafeButton" to="." method="_on_open_safe_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/OpenUnsafeButton" to="." method="_on_open_unsafe_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

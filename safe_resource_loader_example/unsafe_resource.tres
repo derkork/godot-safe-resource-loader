@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SRLSavedGame" load_steps=4 format=3 uid="uid://cx4rf0ybe3u7o"]
+
+[ext_resource type="Script" path="res://safe_resource_loader_example/saved_game.gd" id="1_on72l"]
+
+[sub_resource type="GDScript" id="4711"]
+script/source = "extends Resource
+func _init():
+    OS.alert(\"Hey I just executed code!\")
+"
+
+[sub_resource type="Resource" id="Resource_a4lfc"]
+script = SubResource("4711")
+
+[resource]
+script = ExtResource("1_on72l")
+health = 200
+metadata/hack = SubResource("Resource_a4lfc")
