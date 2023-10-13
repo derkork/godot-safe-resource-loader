@@ -61,7 +61,7 @@ Resources provide excellent support for storing/loading large graphs of nested o
 
 ### Do I really need to bother with this?
 
-You will need to look at how popular the game is and the incentive for potential attacker to go to through the trouble of making a malicious savegame and distributing it to your game's player base. For many games this is probably not worth the effort - neither for you nor for a potential attacker. However if your game is popular enough, that it is likely to be a target for hackers, it may be worth considering how you can protect your users from malicious savegames. 
+You will need to look at how popular the game is and the incentive for a potential attacker to go to through the trouble of making a malicious savegame and distributing it to your game's player base. For many games this is probably not worth the effort - neither for you nor for a potential attacker. However if your game is popular enough, that it is likely to be a target for hackers, it may be worth considering how you can protect your users from malicious savegames. 
 
 Using library is one way of doing this. You can also go all in and write a custom serialization system using JSON, XML or another format that doesn't allow for embedded scripts. Another way would be to provide a safe website for sharing savegames where content is scanned before other users can download it. There are a lot of options and this library is just one of them. Pick one that provides the best balance between required security and development effort for your situation.
 
