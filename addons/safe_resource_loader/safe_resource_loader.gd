@@ -40,7 +40,26 @@ static func load(path:String, type_hint:String = "", \
 	if regex.search(file_as_text) != null:
 		push_warning("Resource '" + path + "' contains inline GDScripts, will not load it.")
 		return null
-		
+
+	# Check all ext resources, and verify that all their paths start with res://
+	# This is to prevent loading resources from outside the game directory.
+	#
+	# Format is: 
+	# [ext_resource type="Script" path="res://safe_resource_loader_example/saved_game.gd" id="1_on72l"]
+	# there can be arbitrary whitespace between [] or the key/value pairs. the order of the key/value pairs is arbitrary.
+	# we want to match the path key, and then check that the value starts with res:// 
+	# the type doesn't matter, as resources themselves could contain further resources, which in turn could contain
+	# scripts, so we flat-out refuse to load ANY resource that isn't in res://
+
+	var extResourceRegex:RegEx = RegEx.new()
+	extResourceRegex.compile("\\[\\s*ext_resource\\s*.*?path\\s*=\\s*\"([^\"]*)\".*?\\]")
+	var matches:Array = extResourceRegex.search_all(file_as_text)
+	for match in matches:
+		var resourcePath:String = match.get_string(1)
+		if not resourcePath.begins_with("res://"):
+			push_warning("Resource '" + path + "' contains an ext_resource with a path\n outside 'res://' (path is: '" + resourcePath + "'), will not load it.")
+			return null
+
 	# otherwise use the normal resource loader to load it.
 	return ResourceLoader.load(path, type_hint, cache_mode)
 	
