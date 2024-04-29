@@ -29,9 +29,14 @@ static func load(path:String, type_hint:String = "", \
 		return null
 
 	# Load it as text content, only. This will not execute any scripts.
-	var file = file_access.open(path, File.READ)
-	var file_as_text = file.get_as_text()
-	file.close()
+	var error = file_access.open(path, File.READ)
+	if error != OK:
+		push_error("Failed to open file: " + path)
+		return null
+
+	var file_as_text = file_access.get_as_text()
+	file_access.close()
+
 
 	# Use a regex to find any instance of an embedded GDScript resource.
 	var regex:RegEx = RegEx.new()
