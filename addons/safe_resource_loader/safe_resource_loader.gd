@@ -52,7 +52,7 @@ static func load(path:String, type_hint:String = "", \
 	# scripts, so we flat-out refuse to load ANY resource that isn't in res://
 
 	var extResourceRegex:RegEx = RegEx.new()
-	extResourceRegex.compile("\\[\\s*ext_resource\\s*.*?path\\s*=\\s*\"([^\"]*)\".*?\\]")
+	extResourceRegex.compile("\\[\\s*ext_resource\\s*.*?.*path=\"(?!res:\\/\\/)([^\"]*)\"")
 	var matches:Array = extResourceRegex.search_all(file_as_text)
 	for match in matches:
 		var resourcePath:String = match.get_string(1)
