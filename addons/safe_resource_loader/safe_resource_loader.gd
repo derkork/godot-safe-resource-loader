@@ -50,15 +50,25 @@ static func load(path:String, type_hint:String = "", \
 	# we want to match the path key, and then check that the value starts with res:// 
 	# the type doesn't matter, as resources themselves could contain further resources, which in turn could contain
 	# scripts, so we flat-out refuse to load ANY resource that isn't in res://
+	# Another wrinkle is that Godot seems to happily load [ext_resource] declarations which
+	# have multiple path=".." attributes, in which case it last one wins. This means that we
+	# have to find any occurrence of path=".." which is not pointing towards res://
 
 	var extResourceRegex:RegEx = RegEx.new()
-	extResourceRegex.compile("\\[\\s*ext_resource\\s*.*?.*path=\"(?!res:\\/\\/)([^\"]*)\"")
+	
+	# We use this regex to find such ext_resource references. Since Godot allows whitespace
+	# everwhere inside we have liberal sprinkling of \\s*. So this will will search for a
+	# ext_resource which has any path=".." in it where the path doesn't start with res://
+	extResourceRegex.compile("\\[\\s*ext_resource\\s+.*?\\s*path\\s*=\\s*\"(?!res:\\/\\/)([^\"]*)\"")
 	var matches:Array = extResourceRegex.search_all(file_as_text)
+	
+	# if we get matches print them out as warnings, then return null
 	for match in matches:
 		var resourcePath:String = match.get_string(1)
-		if not resourcePath.begins_with("res://"):
-			push_warning("Resource '" + path + "' contains an ext_resource with a path\n outside 'res://' (path is: '" + resourcePath + "'), will not load it.")
-			return null
+		push_warning("Resource '" + path + "' contains an ext_resource with a path\n outside 'res://' (path is: '" + resourcePath + "'), will not load it.")
+	
+	if matches.size() > 0:
+		return null
 
 	# otherwise use the normal resource loader to load it.
 	return ResourceLoader.load(path, type_hint, cache_mode)
