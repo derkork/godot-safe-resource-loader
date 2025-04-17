@@ -17,3 +17,6 @@ mono_crash.*.json
 # Apple ignores
 .DS_Store
 
+
+# Intellij ignores
+.idea/
