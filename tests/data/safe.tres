@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="SRLSavedGame" load_steps=2 format=3 uid="uid://odold24tp61k"]
+
+[ext_resource type="Script" path="res://safe_resource_loader_example/saved_game.gd" id="1_277en"]
+
+[resource]
+script = ExtResource("1_277en")
+health = 200

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SRLSavedGame" load_steps=4 format=3 uid="uid://cx4rf0ybe3u7o"]
+
+[ext_resource type="Script" path="res://safe_resource_loader_example/saved_game.gd" id="1_on72l"]
+
+[ ext_resource path="my_script.gd" type="Script"  id="4711"]
+
+[sub_resource type="Resource" id="Resource_a4lfc"]
+script = ExtResource("4711")
+
+[resource]
+script = ExtResource("1_on72l")
+health = 200
+metadata/hack = SubResource("Resource_a4lfc")

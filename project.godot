@@ -24,7 +24,12 @@ project/assembly_name="godot-safe-resource-loader"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/safe_resource_loader/plugin.cfg")
+enabled=PackedStringArray("res://addons/safe_resource_loader/plugin.cfg", "res://addons/gdUnit4/plugin.cfg")
+
+[gdunit4]
+
+settings/common/update_notification_enabled=false
+settings/test/test_root_folder="tests"
 
 [rendering]
 
