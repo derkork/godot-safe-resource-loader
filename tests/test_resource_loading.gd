@@ -27,3 +27,8 @@ func test_load_resource_with_unsafe_external_references_is_blocked():
 func test_load_resource_with_comment_hack_is_blocked():
 	var result = SafeResourceLoader.load(_resource_path("obscures_attributes_with_comments.tres"))
 	assert_that(result).is_null()
+
+	
+func test_load_resource_with_extra_line_breaks_is_blocked():
+	var result = SafeResourceLoader.load(_resource_path("contains_extra_line_breaks.tres"))
+	assert_that(result).is_null()
