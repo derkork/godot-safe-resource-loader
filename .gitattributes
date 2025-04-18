@@ -4,7 +4,8 @@
 # Only include the addons folder when downloading from the Asset Library.
 /**        export-ignore
 /addons    !export-ignore
-/addons/** !export-ignore
+/addons/safe_resource_loader/ !export-ignore
+/addons/safe_resource_loader/** !export-ignore
 # also include the examples folder
 /safe_resource_loader_example !export-ignore
 /safe_resource_loader_example/** !export-ignore
