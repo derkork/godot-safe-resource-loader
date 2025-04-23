@@ -1,4 +1,4 @@
-﻿extends GdUnitTestSuite
+extends GdUnitTestSuite
 
 func _resource_path(tres_file: String):
 	return ProjectSettings.globalize_path("res://tests/data/%s" % tres_file)
@@ -12,7 +12,7 @@ func test_load_safe_resource_works():
 func test_load_resource_with_inline_script_is_blocked():
 	var result = SafeResourceLoader.load(_resource_path("contains_inline_scripts.tres"))
 	assert_that(result).is_null()
-	
+
 
 func test_load_resource_with_duplicate_path_attribute_is_blocked():
 	var result = SafeResourceLoader.load(_resource_path("contains_duplicate_path_attributes.tres"))
@@ -28,7 +28,22 @@ func test_load_resource_with_comment_hack_is_blocked():
 	var result = SafeResourceLoader.load(_resource_path("obscures_attributes_with_comments.tres"))
 	assert_that(result).is_null()
 
-	
+
 func test_load_resource_with_extra_line_breaks_is_blocked():
 	var result = SafeResourceLoader.load(_resource_path("contains_extra_line_breaks.tres"))
+	assert_that(result).is_null()
+
+
+func test_load_resource_with_legacy_string_names_is_blocked():
+	var result = SafeResourceLoader.load(_resource_path("contains_legacy_string_names.tres"))
+	assert_that(result).is_null()
+
+
+func test_load_resource_with_node_paths_is_blocked():
+	var result = SafeResourceLoader.load(_resource_path("contains_node_paths.tres"))
+	assert_that(result).is_null()
+
+
+func test_load_resource_with_string_names_is_blocked():
+	var result = SafeResourceLoader.load(_resource_path("contains_string_names.tres"))
 	assert_that(result).is_null()

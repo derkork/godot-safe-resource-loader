@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 If a release contains security fixes, it is strongly recommended to update to the latest version as soon as possible!
 
+## [0.1.3] - 2025-04-23
+### Security fixes
+- Fixed a security issue where the attacker could circumvent the safe resource loading by using `NodePath`s ([GHSA-9hrm-6m9q-36jx](https://github.com/derkork/godot-safe-resource-loader/security/advisories/GHSA-9hrm-6m9q-36jx)).
+- Fixed a security issue where the attacker could circumvent the safe resource loading by using `StringName`s ([GHSA-pv3c-c5qh-vx2h](https://github.com/derkork/godot-safe-resource-loader/security/advisories/GHSA-pv3c-c5qh-vx2h))
+- Another huge thanks goes out to [Patou](https://github.com/xorblo-doitus) for reporting these issues and helping me to provide a fix!
+
 ## [0.1.2] - 2025-04-18
 ### Improved
 - Added an automated test suite to check that previously reported vulnerabilities remain fixed when doing changes to the code.

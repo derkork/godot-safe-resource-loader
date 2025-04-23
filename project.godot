@@ -30,6 +30,7 @@ enabled=PackedStringArray("res://addons/safe_resource_loader/plugin.cfg", "res:/
 
 settings/common/update_notification_enabled=false
 settings/test/test_root_folder="tests"
+ui/toolbar/run_overall=true
 
 [rendering]
 
