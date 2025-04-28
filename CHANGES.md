@@ -8,7 +8,7 @@ If a release contains security fixes, it is strongly recommended to update to th
 
 ## [0.1.4] - 2025-04-28
 ### Fixed
-- The resource loader now properly loads resources which have properties ending in `path` ([#9](https://github.com/derkork/godot-safe-resource-loader/issues/9)).
+- The resource loader now properly loads resources which have properties ending in `path` in sub-resources ([#9](https://github.com/derkork/godot-safe-resource-loader/issues/9)).
 
 ## [0.1.3] - 2025-04-23
 ### Security fixes
