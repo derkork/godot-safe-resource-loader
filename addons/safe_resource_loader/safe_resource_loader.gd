@@ -62,7 +62,7 @@ static func load(path:String, type_hint:String = "", \
 	# We use this regex to find such ext_resource references. Since Godot allows whitespace
 	# everwhere inside we have liberal sprinkling of \\s*. So this will will search for a
 	# ext_resource which has any path=".." in it where the path doesn't start with res://
-	extResourceRegex.compile("\\[\\s*ext_resource\\s+(\\s|.)*?path\\s*=\\s*(?!\"res:\\/\\/)(\\s|.)*?\\]")
+	extResourceRegex.compile("\\[\\s*ext_resource\\s+[^\\]]*?path\\s*=\\s*(?!\"res:\\/\\/)[^\\]]*?\\]")
 	var matches:Array = extResourceRegex.search_all(file_as_text)
 	
 	# if we get matches print them out as warnings, then return null

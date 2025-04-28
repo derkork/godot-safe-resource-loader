@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 If a release contains security fixes, it is strongly recommended to update to the latest version as soon as possible!
 
+## [0.1.4] - 2025-04-28
+### Fixed
+- The resource loader now properly loads resources which have properties ending in `path` ([#9](https://github.com/derkork/godot-safe-resource-loader/issues/9)).
+
 ## [0.1.3] - 2025-04-23
 ### Security fixes
 - Fixed a security issue where the attacker could circumvent the safe resource loading by using `NodePath`s ([GHSA-9hrm-6m9q-36jx](https://github.com/derkork/godot-safe-resource-loader/security/advisories/GHSA-9hrm-6m9q-36jx)).

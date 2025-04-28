@@ -1,7 +1,13 @@
 [gd_resource type="Resource" script_class="SRLSavedGame" load_steps=2 format=3 uid="uid://odold24tp61k"]
 
 [ext_resource type="Script" path="res://safe_resource_loader_example/saved_game.gd" id="1_277en"]
+[ext_resource type="Script" path="res://safe_resource_loader_example/saved_game_subresource.gd" id="2_qve2v"]
+
+[sub_resource type="Resource" id="Resource_75pld"]
+script = ExtResource("2_qve2v")
+some_path = NodePath("VBoxContainer")
 
 [resource]
 script = ExtResource("1_277en")
 health = 200
+sub_resource = SubResource("Resource_75pld")
