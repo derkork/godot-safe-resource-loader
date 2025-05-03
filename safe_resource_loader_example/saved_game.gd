@@ -7,3 +7,9 @@ extends Resource
 
 ## A sub-resource with a property having `path` in its name. This should not be detected as false positive.
 @export var sub_resource:SavedGameSubResource = SavedGameSubResource.new()
+
+@export var some_array:Array[int] = [1,2,3]
+
+@export var some_dictionary:Dictionary = {
+	"foo" : "bar"
+}

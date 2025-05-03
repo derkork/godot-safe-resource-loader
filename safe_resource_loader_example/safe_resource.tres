@@ -11,3 +11,7 @@ some_path = NodePath("VBoxContainer")
 script = ExtResource("1_277en")
 health = 200
 sub_resource = SubResource("Resource_75pld")
+some_array = Array[int]([1, 2, 3])
+some_dictionary = {
+"foo": "bar"
+}

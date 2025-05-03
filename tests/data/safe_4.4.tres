@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Noot" load_steps=2 format=3 uid="uid://dbobikf6x02lm"]
+
+[ext_resource type="Script" uid="uid://cg64ajc62n1nk" path="res://noot.gd" id="1_eau8o"]
+
+[resource]
+script = ExtResource("1_eau8o")
+some_dict = Dictionary[String, int]({
+"Noot": {
+0: [5, null]
+}
+})
+metadata/_custom_type_script = "uid://cg64ajc62n1nk"
