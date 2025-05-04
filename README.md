@@ -45,7 +45,7 @@ Godot's text based resource format makes it easy to embed malicious scripts into
 
 ### How does it work?
 
-The current implementation is rather simple, it checks with a regular expression whether there are embedded resources of type `GDScript` in the file before feeding the file to Godot's `ResourceLoader`. It also verifies that all external resources originate from the `res://` path, so that you cannot inject scripts by putting them next to the resource file. If any of these checks fail, the resource is not loaded and a warning is printed.
+The addon first reads in the text file and parses it with its own parser implementation. This custom parser will not instantiate any scripts while parsing the file, so it cannot be attacked in the same way as the built-in resource loader. After parsing the file, the addon checks whether there are embedded resources of type `GDScript` in the file before feeding the file to Godot's `ResourceLoader`. It also verifies that all external resources originate from the `res://` path, so that you cannot inject scripts by putting them next to the resource file. If any of these checks fail, the resource is not loaded and a warning is printed.
 
 ### Is this secure?
 
