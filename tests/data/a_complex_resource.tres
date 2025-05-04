@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="SomeComplexResource" load_steps=7 format=3 uid="uid://duu3t8x23k4pm"]
+
+[ext_resource type="Script" path="res://tests/data/complex_resource.gd" id="1_cnb8e"]
+
+[sub_resource type="Curve2D" id="Curve2D_tsobu"]
+bake_interval = 37.3
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 2, 4)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_jkfhw"]
+bake_interval = 5.14
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_ld8cg"]
+script = ExtResource("1_cnb8e")
+some_transform = Transform3D(1, 0, 0, 32, 34, 0, 0, 0, 1, 0, 324, 0)
+some_curve = SubResource("Curve2D_jkfhw")
+some_array = PackedStringArray("Woot", "")
+some_dictionary = {}
+some_other_array = Array[StringName]([])
+
+[sub_resource type="Gradient" id="Gradient_55q7t"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.428295, 0.660853, 0.78876, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.722868, 0.722868, 0.722868, 1, 0.8356, 0.8356, 0.8356, 1, 0.897602, 0.897602, 0.897602, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wfpc7"]
+gradient = SubResource("Gradient_55q7t")
+
+[resource]
+script = ExtResource("1_cnb8e")
+some_transform = Transform3D(1, 0, 0, 2, 1, 0, 0, 0, 1, 0, 0, 1)
+some_curve = SubResource("Curve2D_tsobu")
+some_array = PackedStringArray("Noot", "Noot")
+some_dictionary = {
+[Plane(1, 2, 3, 0)]: NodePath(".")
+}
+some_other_array = Array[StringName]([&"Nootnoot", &"Nodeldoot", &""])
+some_texture = SubResource("GradientTexture1D_wfpc7")
+some_nested_complex_resource = SubResource("Resource_ld8cg")

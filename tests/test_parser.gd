@@ -5,6 +5,7 @@ const Parser = preload("res://addons/safe_resource_loader/resource_parser.gd")
 
 func test_parser():
 	var sample_files:Array[String] = [
+		"res://tests/data/a_complex_resource.tres",
 		"res://tests/data/contains_duplicate_path_attributes.tres", 
 		"res://tests/data/contains_extra_line_breaks.tres", 
 		"res://tests/data/contains_inline_scripts.tres", 
