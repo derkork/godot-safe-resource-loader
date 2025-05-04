@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 If a release contains security fixes, it is strongly recommended to update to the latest version as soon as possible!
 
+## [0.2.0] - 2025-05-04
+### Improved
+- The resource validation process now uses a proper parser to parse the resource files. This should end the game of whack-a-mole which plagued the previous version that operated on regular expressions. We now read the resource files in a similar fashion to how Godot does it and not just try to match fragments of text. This should also eliminate any false positives that were caused by the regex parser. **Important: I have tested the parser with some reasonably complex resource files, but there may still be some constructs that I'm not aware of. If the parser refuses to parse a file that should be valid, please open an issue and attach the file in question. Thank you!** 
+
 ## [0.1.4] - 2025-04-28
 ### Fixed
 - The resource loader now properly loads resources which have properties ending in `path` in sub-resources ([#9](https://github.com/derkork/godot-safe-resource-loader/issues/9)).
