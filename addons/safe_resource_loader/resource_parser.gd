@@ -67,7 +67,7 @@ func _dictionary_declaration() -> MatchItem:
 	return _cache("dictionary_declaration", func(): return _sequence([
 		_other_with_value("Dictionary"),
 		_optional( # type declaration, which is optional
-			_sequence([_open_bracket(), _other(), _comma(), _other(), _close_bracket()])
+			_sequence([_open_bracket(), _type(), _comma(), _type(), _close_bracket()])
 		),
 		_open_paren(),
 		_optional(_dictionary_literal()),
@@ -89,7 +89,7 @@ func _array_declaration() -> MatchItem:
 	return _cache("array_declaration", func(): return _sequence([
 		_other_with_value("Array"),
 		_optional( # type declaration, which is optional
-			_sequence([_open_bracket(), _other(), _close_bracket()]).named("type_declaration")
+			_sequence([_open_bracket(), _type(), _close_bracket()]).named("type_declaration")
 		),
 		_open_paren(),
 		_optional(_array_literal()),
@@ -131,6 +131,15 @@ func _value(target: String = "") -> MatchItem:
 		_other(), 
 	], target)
 	)
+	
+# This is a type declaration in a dictionary or array.	
+func _type() -> MatchItem:
+	return _cache("type", func(): return _one_of([
+		# complex things go first
+		_invocation(), # reference to a custom script, usually an ExtResource invocation
+		_other()  # simple identifier like, int, string, etc..
+	]))
+		
 
 func _sequence(items: Array[MatchItem], target:String = "") -> MatchItem: return MatchItemSequence.new(items, target)
 func _one_of(items: Array[MatchItem], target:String = "") -> MatchItem: return MatchItemOneOf.new(items, target)

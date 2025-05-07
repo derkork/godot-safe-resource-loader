@@ -5,6 +5,7 @@ const Parser = preload("res://addons/safe_resource_loader/resource_parser.gd")
 
 func test_parser():
 	var sample_files:Array[String] = [
+		"res://tests/data/number_10.tres",
 		"res://tests/data/a_complex_resource.tres",
 		"res://tests/data/contains_duplicate_path_attributes.tres", 
 		"res://tests/data/contains_extra_line_breaks.tres", 
@@ -26,8 +27,6 @@ func _assert_can_parse(file:String):
 	var input = FileAccess.get_file_as_string(file)
 	var lexer := Lexer.new()
 	var result = lexer.tokens(input)
-	for token in result:
-		print(token)
 		
 	assert_bool(lexer.encountered_error).is_false()
 
@@ -35,9 +34,13 @@ func _assert_can_parse(file:String):
 	var parsed := parser.parse(result)
 	
 	assert_bool(parser.encountered_error).is_false()
-	
-	for tag in parsed:
-		print(tag)
+
+	if lexer.encountered_error or parser.encountered_error:
+		for token in result:
+			print(token)
+	else:
+		for tag in parsed:
+			print(tag)
 		
 	assert_array(parsed).is_not_empty()
 	

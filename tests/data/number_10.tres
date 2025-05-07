@@ -1,0 +1,237 @@
+[gd_resource type="Resource" script_class="SavedGame" load_steps=32 format=3]
+
+[ext_resource type="Script" path="res://resources/save_data/save_data.gd" id="1_3g5fx"]
+[ext_resource type="Script" path="res://resources/character_data.gd" id="2_p7x7e"]
+[ext_resource type="Script" path="res://resources/save_data/save_metadata.gd" id="3_q1ook"]
+[ext_resource type="Script" path="res://resources/save_data/entity_save_data.gd" id="4_uryor"]
+[ext_resource type="Script" path="res://resources/attack_data.gd" id="5_ftk4m"]
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="6_ukm83"]
+[ext_resource type="Script" path="res://resources/inventory_data.gd" id="7_45vo8"]
+[ext_resource type="Script" path="res://resources/player_choice_data.gd" id="8_p5opi"]
+[ext_resource type="Script" path="res://resources/save_data/saved_globals.gd" id="9_6xucl"]
+[ext_resource type="Script" path="res://resources/save_data/saved_game.gd" id="10_a25q0"]
+
+[sub_resource type="Resource" id="Resource_muiws"]
+script = ExtResource("2_p7x7e")
+name = "box"
+hp = 20
+hp_max = 100
+stamina = 100
+stamina_max = 50
+stamina_cost_run = 5
+stamina_restore = 5
+stamina_cooldown_until = 15
+speed = 300.0
+speed_run = 600
+speed_stealth = 100
+acceleration_x = 500.0
+shield_defence_pct = 50
+shield_defence_bonus_pct = 1
+armor_defence = 1
+base_magic_defence = 1
+fire_magic_defence = 1
+magic_items_bonus_pct = 1
+raycast_distance = 1000
+jump_force = 600
+looking_to_direction = 1
+destroyed = false
+metadata/_custom_type_script = "uid://o7xm8vxkga8x"
+
+[sub_resource type="Resource" id="Resource_g5uag"]
+script = ExtResource("3_q1ook")
+node_path = NodePath("/root/Main/MainGame/Level/Objects/Box")
+
+[sub_resource type="Resource" id="Resource_eplhp"]
+script = ExtResource("4_uryor")
+character_data = SubResource("Resource_muiws")
+global_posiion = Vector2(-284, 478.977)
+save_metadata = SubResource("Resource_g5uag")
+
+[sub_resource type="Resource" id="Resource_38tvp"]
+script = ExtResource("2_p7x7e")
+name = "box"
+hp = 20
+hp_max = 100
+stamina = 100
+stamina_max = 50
+stamina_cost_run = 5
+stamina_restore = 5
+stamina_cooldown_until = 15
+speed = 300.0
+speed_run = 600
+speed_stealth = 100
+acceleration_x = 500.0
+shield_defence_pct = 50
+shield_defence_bonus_pct = 1
+armor_defence = 1
+base_magic_defence = 1
+fire_magic_defence = 1
+magic_items_bonus_pct = 1
+raycast_distance = 1000
+jump_force = 600
+looking_to_direction = 1
+destroyed = false
+metadata/_custom_type_script = "uid://o7xm8vxkga8x"
+
+[sub_resource type="Resource" id="Resource_4vd5p"]
+script = ExtResource("3_q1ook")
+node_path = NodePath("/root/Main/MainGame/Level/Objects/ItemDrop")
+
+[sub_resource type="Resource" id="Resource_154rl"]
+script = ExtResource("4_uryor")
+character_data = SubResource("Resource_38tvp")
+global_posiion = Vector2(-333, 807.973)
+save_metadata = SubResource("Resource_4vd5p")
+
+[sub_resource type="Resource" id="Resource_0ioqx"]
+script = ExtResource("5_ftk4m")
+title = "attack"
+physical_damage = 10
+distance = 100
+metadata/_custom_type_script = "uid://chdxlq7au81jp"
+
+[sub_resource type="Resource" id="Resource_xuixu"]
+script = ExtResource("2_p7x7e")
+name = "knight"
+hp = 20
+hp_max = 20
+stamina = 100
+stamina_max = 50
+stamina_cost_run = 5
+stamina_restore = 5
+stamina_cooldown_until = 15
+speed = 300.0
+speed_run = 600
+speed_stealth = 100
+acceleration_x = 500.0
+shield_defence_pct = 50
+shield_defence_bonus_pct = 1
+armor_defence = 1
+base_magic_defence = 1
+fire_magic_defence = 1
+magic_items_bonus_pct = 1
+attack_data = SubResource("Resource_0ioqx")
+raycast_distance = 3000
+jump_force = 600
+looking_to_direction = 1
+destroyed = false
+
+[sub_resource type="Resource" id="Resource_qbgxj"]
+script = ExtResource("3_q1ook")
+node_path = NodePath("/root/Main/MainGame/Level/Npcs/Npc")
+
+[sub_resource type="Resource" id="Resource_d6vvt"]
+script = ExtResource("4_uryor")
+character_data = SubResource("Resource_xuixu")
+global_posiion = Vector2(2365, 475)
+save_metadata = SubResource("Resource_qbgxj")
+
+[sub_resource type="Resource" id="Resource_xt8we"]
+script = ExtResource("3_q1ook")
+node_path = NodePath("/root/Main/MainGame/Player")
+
+[sub_resource type="Resource" id="Resource_16eph"]
+script = ExtResource("1_3g5fx")
+save_metadata = SubResource("Resource_xt8we")
+
+[sub_resource type="Resource" id="Resource_eu26x"]
+script = ExtResource("5_ftk4m")
+title = "attack"
+physical_damage = 10
+distance = 100
+metadata/_custom_type_script = "uid://dy127hyabvtqs"
+
+[sub_resource type="Resource" id="Resource_3n0u3"]
+script = ExtResource("2_p7x7e")
+name = "player"
+hp = 100
+hp_max = 100
+stamina = 50
+stamina_max = 50
+stamina_cost_run = 5
+stamina_restore = 5
+stamina_cooldown_until = 15
+speed = 450.0
+speed_run = 800
+speed_stealth = 200
+acceleration_x = 500.0
+shield_defence_pct = 50
+shield_defence_bonus_pct = 1
+armor_defence = 1
+base_magic_defence = 1
+fire_magic_defence = 1
+magic_items_bonus_pct = 1
+attack_data = SubResource("Resource_eu26x")
+raycast_distance = 3000
+jump_force = 1000
+looking_to_direction = 1
+destroyed = false
+
+[sub_resource type="Resource" id="Resource_1sldq"]
+script = ExtResource("3_q1ook")
+node_path = NodePath("/root/Main/MainGame/Player/PlayerBody2D")
+
+[sub_resource type="Resource" id="Resource_hjvo2"]
+script = ExtResource("4_uryor")
+character_data = SubResource("Resource_3n0u3")
+global_posiion = Vector2(-322.5, 431.953)
+save_metadata = SubResource("Resource_1sldq")
+
+[sub_resource type="Resource" id="Resource_3g5fx"]
+script = ExtResource("5_ftk4m")
+title = "attack"
+physical_damage = 10
+distance = 100
+metadata/_custom_type_script = "uid://dy127hyabvtqs"
+
+[sub_resource type="Resource" id="Resource_p7x7e"]
+script = ExtResource("2_p7x7e")
+name = "player"
+hp = 100
+hp_max = 100
+stamina = 50
+stamina_max = 50
+stamina_cost_run = 5
+stamina_restore = 5
+stamina_cooldown_until = 15
+speed = 450.0
+speed_run = 800
+speed_stealth = 200
+acceleration_x = 500.0
+shield_defence_pct = 50
+shield_defence_bonus_pct = 1
+armor_defence = 1
+base_magic_defence = 1
+fire_magic_defence = 1
+magic_items_bonus_pct = 1
+attack_data = SubResource("Resource_3g5fx")
+raycast_distance = 3000
+jump_force = 1000
+looking_to_direction = 1
+destroyed = false
+
+[sub_resource type="Resource" id="Resource_q1ook"]
+script = ExtResource("7_45vo8")
+items = Array[ExtResource("6_ukm83")]([])
+
+[sub_resource type="Resource" id="Resource_uryor"]
+script = ExtResource("8_p5opi")
+art_node_tscn_path = "res://scenes/player_art.tscn"
+head_texture_path = "res://animation/PlayerCharacter/NewPlayerBoneSprites/Head.png"
+metadata/_custom_type_script = "uid://ud0n8tsxusp4"
+
+[sub_resource type="Resource" id="Resource_ftk4m"]
+script = ExtResource("9_6xucl")
+character_data = SubResource("Resource_p7x7e")
+inventory_data = SubResource("Resource_q1ook")
+player_choice_data = SubResource("Resource_uryor")
+
+[resource]
+script = ExtResource("10_a25q0")
+saved_data_list = Array[ExtResource("1_3g5fx")]([SubResource("Resource_eplhp"), SubResource("Resource_154rl"), SubResource("Resource_d6vvt"), SubResource("Resource_16eph"), SubResource("Resource_hjvo2")])
+saved_globals = SubResource("Resource_ftk4m")
+save_filepath = "user://saves/1746594846.tres"
+image_filepath = "user://save_pics/1746594846.jpg"
+datetime = "2025-05-07T08:14:06"
+name = "2025-05-07T08:14:06"
+save_type = 1
