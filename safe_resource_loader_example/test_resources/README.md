@@ -1,0 +1,1 @@
+This folder is excluded so Godot will not try to mess with the resources when adding UIDs in Godot 4.4. or later. 

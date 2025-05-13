@@ -17,7 +17,7 @@ func _on_open_safe_button_pressed():
 	
 
 func _on_open_button_pressed():
-	_file_dialog.current_dir = ProjectSettings.globalize_path("res://safe_resource_loader_example")
+	_file_dialog.current_dir = ProjectSettings.globalize_path("res://safe_resource_loader_example/test_resources")
 	_file_dialog.popup_centered()
 
 
