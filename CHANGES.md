@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 If a release contains security fixes, it is strongly recommended to update to the latest version as soon as possible!
 
+## [0.2.2] - 2025-05-13
+### Fixed
+- The example is no longer broken by Godot 4.4's UID migration.
+
 ## [0.2.1] - 2025-05-07
 ### Fixed
 - The parser now properly handles arrays and dictionaries of custom types (e.g. ` Array[ExtResource("6_ukm83")]([])`) ([#10](https://github.com/derkork/godot-safe-resource-loader/issues/10)). 
