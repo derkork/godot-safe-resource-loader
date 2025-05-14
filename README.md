@@ -66,7 +66,3 @@ You will need to look at how popular the game is and the incentive for a potenti
 Another reason why you may want to consider thinking about this, is that injecting scripts can also be used for cheating. If you have a competitive multiplayer game, you may want to prevent players from injecting scripts the game through savegames that give them an unfair advantage.
 
 Using this library is one way of doing this. You can also go all in and write a custom serialization system using JSON, XML or another format that doesn't allow for embedded scripts. There are several options. Pick one that provides the best balance between required security and development effort for your situation.
-
-### Why is the icon looking so hideous?
-
-Because I'm a programmer, not a designer. If you want to contribute a better icon, a PR is always welcome.
