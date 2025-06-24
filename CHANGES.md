@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 If a release contains security fixes, it is strongly recommended to update to the latest version as soon as possible!
 
+## [0.3.0] - 2025-06-24
+### Added
+- It is now possible to load resources in a separate thread. This allows you to load resources without blocking the main thread, which is especially useful for large resources that may load additional game resources. The API for threaded loading is a drop-in-replacement for Godot's built-in `ResourceLoader` functions (`load_threaded_request`, `load_treaded_get_status` and `load_threaded_get`), similar to the `load` function that already exists. ([#13](https://github.com/derkork/godot-safe-resource-loader/issues/13)).
+
 ## [0.2.3] - 2025-05-14
 ### Improved
 - The icon has received some love and now sports a clean and simple design that is a big improvement over the old icon. A huge thanks goes to [zibetnu](https://github.com/zibetnu) who got the process started and patiently worked with me through several iterations ([#8](https://github.com/derkork/godot-safe-resource-loader/issues/8))!

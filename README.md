@@ -1,9 +1,17 @@
 # Godot Safe Resource Loader
 
-_This library is still quite new and has not seen much use yet. While it works reasonably well, there may still be bugs and security issues. Please report any issues you find._
+
 
 <!--suppress HtmlDeprecatedAttribute -->
 <p align="center"><img height="64" src="icon.svg" width="64"/></p>
+
+## Table of Contents
+- [What is Godot Safe Resource Loader?](#what-is-godot-safe-resource-loader)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Threaded Loading](#threaded-loading)
+  - [Example Project](#example-project)
+- [FAQ](#faq)
 
 ## What is Godot Safe Resource Loader?
 
@@ -31,6 +39,49 @@ var resource = loader.Call("load", "user://path/to/saved_game.tres");
 ```
 
 This will scan the resource for embedded GDScripts and only load it if none are found. If embedded GDScripts are found, a warning will be printed and this function returns `null`. Note that this function will only load from paths outside the `res://` folder (e.g. saved games are usually stored in the `user://` folder). Loading resources that are under your control with this does not make any sense and in addition will not work once you export the game, as resources inside the `res://` folder cannot be accessed by file system scripts after export.
+
+### Threaded Loading
+
+Starting with version 0.3.0, the library also provides threaded loading of resources. The API is exactly the same as with Godot's built-in `ResourceLoader` functions (`load_threaded_request`, `load_threaded_get_status` and `load_threaded_get`) , just replace `ResourceLoader` with `SafeResourceLoader`:
+
+```gdscript
+var path = "user://path/to/saved_game.tres"
+# request the resource to be loaded in a separate thread
+var error_code = SafeResourceLoader.load_threaded_request(path)
+if error_code == ERR_INVALID_DATA:
+    print("Resource was not safe to load.")
+
+# get the status of the loading operation
+var percentage = [0.0]
+var load_status = SafeResourceLoader.load_threaded_get_status(path, percentage) 
+
+# and finally get the loaded resource
+var resource = SafeResourceLoader.load_threaded_get(path)
+```
+
+Similarly, in C# you can use the following code:
+
+```csharp
+var loader = ResourceLoader.Load("res://addons/safe_resource_loader/safe_resource_loader.gd") as Script;
+var path = "user://path/to/saved_game.tres";
+
+// request the resource to be loaded in a separate thread
+var errorCode = (Error) loader.Call("load_threaded_request", path).AsInt32();
+
+if (errorCode == Error.InvalidData)
+{
+    GD.Print("Resource was not safe to load.");
+}
+
+// get the status of the loading operation
+var percentage = new Godot.Collections.Array();
+var loadStatus = (ResourceLoader.ThreadLoadStatus) loader.Call("load_threaded_get_status", path, percentage).AsInt32();
+
+// and finally get the loaded resource
+var resource = loader.Call("load_threaded_get", path).As<Resource>();
+```
+
+
 
 ## Example Project
 
