@@ -20,7 +20,35 @@ Godot Safe Resource Loader is a small library that allows you to safely load `.t
 
 ## Installation
 
-Installation is very straightforward, you can download the library through the godot asset lib. Alternatively, you can download the latest release from the [releases page](releases/) and unzipping the contents into your project. The library code is located in `addons/safe_resource_loader/`. You can also find an example in the `safe_resource_loader_example/` folder. The example folder is not required so you can choose to not import it into your project. Finally go to `Project -> Project Settings -> Plugins` and enable the plugin.
+### Godot Asset Library
+Installation is very straightforward, you can download the library through the godot asset library directly from within Godot.
+
+### Godot Goodie Grabber (GGG)
+
+If you use [Godot Goodie Grabber](https://godotneers.github.io/ggg) to manage your project's dependencies, you can add Godot Safe Resource Loader directly from the asset library using its asset ID `2249`:
+
+```bash
+ggg add asset --id 2249 --name "godot_safe_resource_loader"
+ggg sync
+```
+
+This installs the plugin - including the example - into your project's `addons` folder. If you don't want the examples, edit the resulting entry in `ggg.toml` to add an `exclude` section:
+
+```toml
+[[dependency]]
+name     = "godot_safe_resource_loader"
+asset_id = 2249
+exclude = ["safe_resource_loader_example"]
+```
+Run `ggg sync` again after editing `ggg.toml` to apply the change.
+
+### Manually
+
+Alternatively, you can download the latest release from the [releases page](releases/) and unzipping the contents into your project. The library code is located in `addons/safe_resource_loader/`. You can also find an example in the `safe_resource_loader_example/` folder. The example folder is not required so you can choose to not import it into your project. 
+
+### After installation
+
+Go to `Project -> Project Settings -> Plugins` and enable the plugin.
 
 
 ## Usage
@@ -49,7 +77,7 @@ var path = "user://path/to/saved_game.tres"
 # request the resource to be loaded in a separate thread
 var error_code = SafeResourceLoader.load_threaded_request(path)
 if error_code == ERR_INVALID_DATA:
-    print("Resource was not safe to load.")
+	print("Resource was not safe to load.")
 
 # get the status of the loading operation
 var percentage = [0.0]
@@ -70,7 +98,7 @@ var errorCode = (Error) loader.Call("load_threaded_request", path).AsInt32();
 
 if (errorCode == Error.InvalidData)
 {
-    GD.Print("Resource was not safe to load.");
+	GD.Print("Resource was not safe to load.");
 }
 
 // get the status of the loading operation
@@ -114,6 +142,6 @@ Resources provide excellent support for storing/loading large graphs of nested o
 
 You will need to look at how popular the game is and the incentive for a potential attacker to go to through the trouble of making a malicious savegame and distributing it to your game's player base. For many games this is probably not worth the effort - neither for you nor for a potential attacker. However if your game is popular enough, that it is likely to be a target for hackers, it may be worth considering how you can protect your users from malicious savegames. 
 
-Another reason why you may want to consider thinking about this, is that injecting scripts can also be used for cheating. If you have a competitive multiplayer game, you may want to prevent players from injecting scripts the game through savegames that give them an unfair advantage.
+Another reason why you may want to consider thinking about this, is that injecting scripts can also be used for cheating. If you have a competitive multiplayer game, you may want to prevent players from injecting scripts into the game through savegames that give them an unfair advantage.
 
 Using this library is one way of doing this. You can also go all in and write a custom serialization system using JSON, XML or another format that doesn't allow for embedded scripts. There are several options. Pick one that provides the best balance between required security and development effort for your situation.
